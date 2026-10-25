@@ -1,23 +1,45 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
 import './App.css';
 
 function App() {
+  const [taches, setTaches] = useState([]);
+
+  const ajouterTache = (texte) => {
+    const nouvelleTache = {
+      id: Date.now(),
+      texte,
+      terminee: false,
+    };
+
+    setTaches([...taches, nouvelleTache]);
+  };
+
+  const changerEtat = (id) => {
+    setTaches(
+      taches.map((t) =>
+        t.id === id ? { ...t, terminee: !t.terminee } : t
+      )
+    );
+  };
+
+  const supprimerTache = (id) => {
+    setTaches(taches.filter((t) => t.id !== id));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Ma To-Do List Interactive</h1>
+
+      <TodoForm ajouterTache={ajouterTache} />
+
+      <TodoList
+        taches={taches}
+        changerEtat={changerEtat}
+        supprimerTache={supprimerTache}
+      />
     </div>
   );
 }

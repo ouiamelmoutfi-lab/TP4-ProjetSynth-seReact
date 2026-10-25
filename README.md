@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+# TP 4 : Projet de synthèse React – To-Do List interactive ou Blog simple
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. Objectif du projet
 
-## Available Scripts
+Ce projet consiste à créer une application To-Do List Interactive avec React. Elle permet de gérer une liste de tâches grâce à une interface simple et interactive.
 
-In the project directory, you can run:
+Les objectifs principaux sont :
 
-### `npm start`
+Créer et organiser des composants React.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Manipuler les données avec le hook useState.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Utiliser les props pour communiquer entre les composants.
 
-### `npm test`
+Gérer les événements et les formulaires.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Améliorer l'interface avec CSS.
 
-### `npm run build`
+##  2. Structure du projet
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Le projet est organisé en plusieurs composants, chacun ayant une responsabilité précise.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![alt text](<Screenshot 2026-10-25 101921.png>)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 3. Création des composants
 
-### `npm run eject`
+## 3.1. Composant TodoForm
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Le composant TodoForm permet à l'utilisateur de saisir une nouvelle tâche et de l'ajouter à la liste.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Le hook useState gère le contenu du champ de saisie. Lors de la soumission du formulaire, la tâche est ajoutée et le champ est vidé. Les champs vides sont ignorés.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 3.2. Composant TodoList
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Le composant TodoList reçoit les tâches via les props et utilise la méthode map() pour afficher chaque tâche avec le composant TodoItem.
 
-## Learn More
+Lorsque la liste est vide, un message indique qu'aucune tâche n'est disponible.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 3.3. Composant TodoItem
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Le composant TodoItem affiche une tâche, une case à cocher et un bouton de suppression.
 
-### Code Splitting
+La case à cocher permet de marquer une tâche comme terminée ou en cours.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Une tâche terminée apparaît avec un texte barré.
 
-### Analyzing the Bundle Size
+Le bouton « Supprimer » permet de retirer une tâche de la liste.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. Gestion de l'état dans App.js
 
-### Making a Progressive Web App
+Le composant App centralise la gestion des tâches à l'aide du hook useState.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Trois fonctions principales sont utilisées :
 
-### Advanced Configuration
+ajouterTache() : ajoute une nouvelle tâche au tableau.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+changerEtat() : modifie l'état d'une tâche.
 
-### Deployment
+supprimerTache() : supprime une tâche du tableau.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Les données et les fonctions sont transmises aux composants enfants grâce aux props.
 
-### `npm run build` fails to minify
+## 5. Tests et vérifications
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Les principales fonctionnalités de l'application ont été testées :
+
+
+Ajout d'une nouvelle tâche.
+
+Affichage automatique de la liste.
+
+Modification de l'état d'une tâche.
+
+Suppression d'une tâche.
+
+Vérification du formulaire vide.
+
+![alt text](image.png)
+
+
+![alt text](<Screenshot 2026-10-25 015925.png>)
+
+## 6. Amélioration du style CSS
+
+Le fichier App.css permet d'améliorer la présentation de l'application.
+
+Le style utilisé permet notamment de :
+
+Centrer le contenu de l'application.
+
+Organiser le formulaire et le champ de saisie.
+
+Personnaliser les boutons.
+
+Ajouter des espacements entre les tâches.
+
+Modifier l'apparence des boutons au survol.
+
+![alt text](image-1.png)
+
+## 7. Préparation de la version de production
+
+7. Préparation de la version de production
+
+Pour préparer l'application au déploiement, la commande suivante a été exécutée :
+
+npm run build
+
+Cette commande a permis de générer le dossier build, qui contient les fichiers optimisés nécessaires à la mise en production.
+
+Les fichiers JavaScript et CSS sont regroupés et optimisés afin de préparer l'application à son hébergement.
+
+Résultat : la compilation s'est terminée avec succès et le dossier build est prêt à être déployé.
+
+Cette étape prépare l'application à la publication, mais ne signifie pas qu'elle a déjà été mise en ligne sur Internet.
+
+![alt text](image-2.png)
